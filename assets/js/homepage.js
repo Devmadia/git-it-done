@@ -8,15 +8,25 @@ var getUserRepos = function(user) {
   
     // make a request to the url
     fetch(apiUrl).then(function(response) {
-        if (response.ok) {
-          response.json().then(function(data) {
+
+    // request was successful
+    if (response.ok) {
+        response.json().then(function(data) {
             displayRepos(data, user);
-          });
-        } else {
-          alert("Error: " + response.statusText); // notifies user their search has no GitHub user associated with it
-        }
-    });
-  };
+        });
+    } else {
+            alert("Error: " + response.statusText);  // notifies user their search has no GitHub user associated with it
+    }
+    })
+
+    .catch(function(error) {
+    // Notice this `.catch()` getting chained onto the end of the `.then()` method
+    alert("Unable to connect to GitHub");  
+    /* User is notified if the request for pulling repo information fails due to internet outage, GitHub connection
+    issue, or any other connection interference. This is so the user doesn't think the page isn't working.*/
+});
+
+};
 
 // store references to <form> element with an id of 'user-form'
 var userFormEl = document.querySelector("#user-form");
