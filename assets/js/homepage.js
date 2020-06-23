@@ -8,10 +8,13 @@ var getUserRepos = function(user) {
   
     // make a request to the url
     fetch(apiUrl).then(function(response) {
-      response.json().then(function(data) {
-        displayRepos(data, user);
-        console.log(data);
-      });
+        if (response.ok) {
+          response.json().then(function(data) {
+            displayRepos(data, user);
+          });
+        } else {
+          alert("Error: " + response.statusText);
+        }
     });
   };
 
@@ -66,6 +69,10 @@ var displayRepos = function(repos, searchTerm) {
             } else {
             statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
         }
+
+        /* If the number is greater than zero, then we'll display the number 
+        of issues and add a red X icon next to it. If there are no issues, 
+        we'll display a blue check mark instead. */
 
         // append to container
         repoEl.appendChild(titleEl);
