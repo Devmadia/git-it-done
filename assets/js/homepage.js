@@ -35,17 +35,17 @@ var nameInputEl = document.querySelector("#username");
 
 // form submission event
 var formSubmitHandler = function(event) {
-event.preventDefault();
-// get value from input element
-var username = nameInputEl.value.trim();
+    event.preventDefault();
+    // get value from input element
+    var username = nameInputEl.value.trim();
 
-if (username) {
-  getUserRepos(username);
-  nameInputEl.value = "";
-} else {
-  alert("Please enter a GitHub username");
-}
-console.log(event);
+    if (username) {
+    getUserRepos(username);
+    nameInputEl.value = "";
+    } else {
+    alert("Please enter a GitHub username");
+    }
+    console.log(event);
 };
 
 // accept both array of repo data and search term as a parameter
@@ -57,6 +57,7 @@ var displayRepos = function(repos, searchTerm) {
     }
     console.log(repos);
     console.log(searchTerm);
+
     // clear old content
     repoContainerEl.textContent = "";
     repoSearchTerm.textContent = searchTerm;
