@@ -13,7 +13,7 @@ var getUserRepos = function(user) {
             displayRepos(data, user);
           });
         } else {
-          alert("Error: " + response.statusText);
+          alert("Error: " + response.statusText); // notifies user their search has no GitHub user associated with it
         }
     });
   };
@@ -40,6 +40,11 @@ console.log(event);
 
 // accept both array of repo data and search term as a parameter
 var displayRepos = function(repos, searchTerm) {
+    // check if api returned any repos
+    if (repos.length === 0) {
+        repoContainerEl.textContent = "No repositories found.";  // returns a statement if no repos are found for the username entered
+        return;
+    }
     console.log(repos);
     console.log(searchTerm);
     // clear old content
