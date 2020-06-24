@@ -66,6 +66,18 @@ var formSubmitHandler = function(event) {
     console.log(event);
 };
 
+// event delegation to handle all clicks on buttons
+var buttonClickHandler = function(event) {
+    // on click, button's data-language is defined as language
+    var language = event.target.getAttribute("data-language");
+    if (language) {
+        getFeaturedRepos(language);
+      
+        //  clears out any remaining text from the repo container
+        repoContainerEl.textContent = "";
+      }
+}
+
 // accept both array of repo data and search term as a parameter
 var displayRepos = function(repos, searchTerm) {
     // check if api returned any repos
