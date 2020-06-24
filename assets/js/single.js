@@ -1,8 +1,18 @@
 // DOM references
 var limitWarningEl = document.querySelector("#limit-warning");
+var repoNameEl = document.querySelector("#repo-name");
 
 // reference to the issues container
 var issueContainerEl = document.querySelector("#issues-container");
+
+// extract query value from query string in the API call function getRepoIssues()
+var getRepoName = function () {
+    // assigning the query string to a variable
+    var queryString = document.location.search;
+    var repoName = queryString.split("=")[1];
+    getRepoIssues(repoName);
+    repoNameEl.textContent = repoName;
+}
 
 // function that will take in a repo name as a parameter
 var getRepoIssues = function(repo) {
@@ -78,4 +88,5 @@ var displayWarning = function(repo) {
     limitWarningEl.appendChild(linkEl);
 };
 
-getRepoIssues("facebook/react");
+getRepoName()
+// getRepoIssues("facebook/react");
