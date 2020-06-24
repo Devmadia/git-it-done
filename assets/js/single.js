@@ -10,9 +10,20 @@ var getRepoName = function () {
     // assigning the query string to a variable
     var queryString = document.location.search;
     var repoName = queryString.split("=")[1];
-    getRepoIssues(repoName);
-    repoNameEl.textContent = repoName;
-}
+
+    // check if a repoName exists
+    if(repoName) {
+        // display repo name on the page
+        repoNameEl.textContent = repoName;
+
+        // only fetches if repoName exists
+        getRepoIssues(repoName);
+
+    // redirect the user back to the homepage to try again    
+    } else {
+        document.location.replace("./index.html");
+    }  
+};
 
 // function that will take in a repo name as a parameter
 var getRepoIssues = function(repo) {
@@ -30,10 +41,10 @@ var getRepoIssues = function(repo) {
                 displayWarning(repo); // informs user if repo has more than 30 issues
             }
           });
-        }
-        else {
-          alert("There was a problem with your request!");
-        }
+        } else {
+            // if not successful, redirect to homepage
+            document.location.replace("./index.html");
+          }
       });
 };
 
