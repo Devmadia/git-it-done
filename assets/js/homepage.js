@@ -32,7 +32,17 @@ var getUserRepos = function(user) {
 var getFeaturedRepos = function(language) {
     var apiUrl = "https://api.github.com/search/repositories?q=" + language + "+is:featured&sort=help-wanted-issues";
   
-    fetch(apiUrl);
+    fetch(apiUrl).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                displayRepos(data.items, language);
+        });
+        
+        } else {
+            // error handling for bad responses
+            alert("Error: " + response.statusText);
+        }
+      });
 };
 
 // store references to <form> element with an id of 'user-form'
