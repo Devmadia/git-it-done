@@ -24,8 +24,15 @@ var getUserRepos = function(user) {
     alert("Unable to connect to GitHub");  
     /* User is notified if the request for pulling repo information fails due to internet outage, GitHub connection
     issue, or any other connection interference. This is so the user doesn't think the page isn't working.*/
-});
+    });
 
+};
+
+// fetches featured repos
+var getFeaturedRepos = function(language) {
+    var apiUrl = "https://api.github.com/search/repositories?q=" + language + "+is:featured&sort=help-wanted-issues";
+  
+    fetch(apiUrl);
 };
 
 // store references to <form> element with an id of 'user-form'
