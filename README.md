@@ -26,4 +26,5 @@
 - GitHub
 
 ![Screenshot of Git It Done App](https://devmadia.github.io/git-it-done/assets/images/MainGitItDone.png)
+
 ![Screenshot of Git It Done App Continued](https://devmadia.github.io/git-it-done/assets/images/2GitItDone.png)
