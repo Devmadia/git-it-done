@@ -29,15 +29,26 @@
           <button type="submit" class="btn">Get User</button>
         </form>
       </div>  
-    </div>
       <!-- Search Bar Form End -->
-      
-      <!-- Repository Info Display -->
-      <div class="col-12 col-md-8">
-        <h2 class="subtitle">Showing Repositories for: <span id="repo-search-term"></span></h2>
-        <div id="repos-container" class="list-group"></div>
+    
+      <!-- search by topic -->
+      <div class="card">
+        <h3 class="card-header text-uppercase">Search By Topic</h3>
+        <div class="card-body" id="language-buttons">
+          <button class="btn" data-language="javascript">Javascript</button>
+          <button class="btn" data-language="html">HTML</button>
+          <button class="btn" data-language="css">CSS</button>
+        </div>
       </div>
+      <!-- search by topic end -->
     </div>
+
+    <!-- Repository Info Display -->
+    <div class="col-12 col-md-8">
+      <h2 class="subtitle">Showing Repositories for: <span id="repo-search-term"></span></h2>
+      <div id="repos-container" class="list-group"></div>
+    </div>
+    
     <!-- Repository Info Display End -->
   </main>
   <script src="./assets/js/homepage.js"></script>

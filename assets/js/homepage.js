@@ -1,6 +1,7 @@
 // DOM element references
 var repoContainerEl = document.querySelector("#repos-container");
 var repoSearchTerm = document.querySelector("#repo-search-term");
+var languageButtonsEl = document.querySelector("#language-buttons");
 
 var getUserRepos = function(user) {
     // format the github api url
@@ -37,7 +38,7 @@ var getFeaturedRepos = function(language) {
             response.json().then(function(data) {
                 displayRepos(data.items, language);
         });
-        
+
         } else {
             // error handling for bad responses
             alert("Error: " + response.statusText);
@@ -122,5 +123,6 @@ var displayRepos = function(repos, searchTerm) {
 
 // event listeners
 userFormEl.addEventListener("submit", formSubmitHandler);
+languageButtonsEl.addEventListener("click", buttonClickHandler);
 
 getUserRepos();
